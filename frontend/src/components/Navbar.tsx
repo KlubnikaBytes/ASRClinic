@@ -4,18 +4,35 @@ const Navbar = () => {
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      const headerHeight = 100;
+      const headerHeight = 90;
       const y = section.getBoundingClientRect().top + window.pageYOffset - headerHeight;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
 
+  // Structured the links so we can cleanly display "Contact Us" 
+  // while linking to the "contact" ID.
+  const navLinks = [
+    { id: 'about', label: 'About' },
+    { id: 'services', label: 'Services' },
+    { id: 'doctors', label: 'Doctors' },
+    { id: 'reviews', label: 'Reviews' },
+    { id: 'contact', label: 'Contact Us' }
+  ];
+
   return (
     <nav 
-      className="navbar navbar-expand-lg bg-white sticky-top py-3" 
-      style={{ boxShadow: "0 4px 12px rgba(0,0,0,0.05)" }}
+      className="navbar navbar-expand-lg sticky-top py-3 transition-all" 
+      style={{ 
+        backgroundColor: "rgba(255, 255, 255, 0.85)", // Semi-transparent white
+        backdropFilter: "blur(12px)",                 // The Glassmorphism blur
+        WebkitBackdropFilter: "blur(12px)",           // Safari support for the blur
+        borderBottom: "1px solid rgba(255, 255, 255, 0.4)", // Subtle glass edge
+        boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05)"   // Very soft, diffuse shadow
+      }}
     >
       <div className="container">
+        
         {/* Typographic Logo Reconstructed */}
         <a 
           className="navbar-brand d-flex align-items-center text-decoration-none" 
@@ -60,23 +77,28 @@ const Navbar = () => {
         {/* Links */}
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul className="navbar-nav align-items-center gap-3 gap-lg-4 fw-semibold mt-3 mt-lg-0">
+            
             <li className="nav-item">
               <a 
-                className="nav-link text-dark px-0 transition-hover" 
+                className="nav-link px-0 transition-hover" 
+                style={{ color: "#003366" }}
                 href="#" 
                 onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
               >
                 Home
               </a>
             </li>
-            {['about', 'services', 'reviews'].map((item) => (
-              <li className="nav-item" key={item}>
+
+            {/* Mapped Navigation Links including Contact Us */}
+            {navLinks.map((item) => (
+              <li className="nav-item" key={item.id}>
                 <a 
-                  className="nav-link text-dark text-capitalize px-0 transition-hover" 
-                  href={`#${item}`} 
-                  onClick={(e) => { e.preventDefault(); scrollToSection(item); }}
+                  className="nav-link px-0 transition-hover" 
+                  style={{ color: "#003366" }}
+                  href={`#${item.id}`} 
+                  onClick={(e) => { e.preventDefault(); scrollToSection(item.id); }}
                 >
-                  {item}
+                  {item.label}
                 </a>
               </li>
             ))}
@@ -90,13 +112,22 @@ const Navbar = () => {
                   fontWeight: "600", 
                   transition: "all 0.3s ease" 
                 }} 
-                onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-2px)"}
-                onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#b4d333";
+                  e.currentTarget.style.color = "#003366";
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#0072ce";
+                  e.currentTarget.style.color = "#ffffff";
+                  e.currentTarget.style.transform = "translateY(0)";
+                }}
                 onClick={() => scrollToSection("contact")}
               >
-                More Information <FaArrowRight fontSize="14px" />
+                Book Appointment <FaArrowRight fontSize="14px" />
               </button>
             </li>
+
           </ul>
         </div>
       </div>

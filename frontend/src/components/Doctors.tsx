@@ -1,179 +1,228 @@
+import { useRef, useState } from "react";
+import { FaChevronLeft, FaChevronRight, FaUserMd, FaHospital } from "react-icons/fa";
 
-
-const doctors = [
+const departmentsData = [
   {
-    department: "NEURO SURGERY",
-    name: "Dr. Tamajit Chakraborty",
-    timing: "Monday 6PM / others by Appointment",
-    hospital: "Rubi, Manipal",
-    image: "https://shapurjiclinic.com/images/doctors/neurosurgery.jpg",
+    department: "Psychiatry",
+    doctors: [
+      {
+        name: "Dr. Arka Adhvaryu (Retd)",
+        timings: "Wed 5pm / others by Appt.",
+        hospital: "RG Kar, GD Hospital",
+        image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200&h=200"
+      }
+    ]
   },
   {
-    department: "GENERAL SURGERY",
-    name: "Dr. Sunanda De",
-    timing: "Mon to Thursday 1PM / Others by App.",
-    hospital: "SSKM(PG Hospital)",
-    image: "https://shapurjiclinic.com/images/doctors/generalsurgery.jpg",
+    department: "Neurology",
+    doctors: [
+      {
+        name: "Dr. Aishee Bhattacharya",
+        timings: "Wed 7PM / others by Appt.",
+        hospital: "SSKM (PG Hospital)",
+        image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200&h=200"
+      },
+      {
+        name: "Dr. Koustav Jana",
+        timings: "By Appointment",
+        hospital: "SSKM (PG Hospital)",
+        image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=200&h=200"
+      }
+    ]
   },
   {
-    department: "UROLOGY",
-    name: "Dr. Subham Sinha",
-    timing: "Monday 5 PM / Others by App.",
-    hospital: "Calcutta Medical College",
-    image: "https://shapurjiclinic.com/images/doctors/urology.jpg",
+    department: "Paediatrics",
+    doctors: [
+      {
+        name: "Dr. Partha Chakraborty",
+        timings: "Mon to Sat 9AM & 5:30PM",
+        hospital: "Bhagirathi Neotia",
+        image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=200&h=200"
+      },
+      {
+        name: "Dr. Sudeshna Mallik",
+        timings: "Mon to Sat 6:30 PM",
+        hospital: "Spandan Hospital",
+        image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200&h=200"
+      }
+    ]
   },
   {
-    department: "GYNAECOLOGY & OBSTETRICS",
-    name: "Dr. Kavita Mandal",
-    timing: "Mon, Wed, Fri - 11AM",
-    hospital: "Bhagirathi Neotia",
-    image: "https://shapurjiclinic.com/images/doctors/gynaecology.jpg",
-  },
+    department: "Cardiology",
+    doctors: [
+      {
+        name: "Dr. Sebabrata Jana",
+        timings: "Saturday 11am / By Appt.",
+        hospital: "Narayana Hospital",
+        image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=200&h=200"
+      },
+      {
+        name: "Dr. Krishanko Das",
+        timings: "Wed 6pm, Sun 10am",
+        hospital: "RG Kar, Charnock",
+        image: "https://images.unsplash.com/photo-1622902046580-2b47f47f5471?auto=format&fit=crop&q=80&w=200&h=200"
+      }
+    ]
+  }
 ];
 
 const Doctors = () => {
-  return (
-    <section
-      style={{
-        background: "#edf2ed",
-        padding: "70px 0",
-      }}
-    >
-      <div className="container">
-        {/* Heading */}
-        <div className="text-center mb-5">
-          <h2
-            style={{
-              fontSize: "56px",
-              fontWeight: "700",
-              color: "#081126",
-              marginBottom: "20px",
-            }}
-          >
-            Department & Timings
-          </h2>
+  const sliderRef = useRef<HTMLDivElement>(null);
+  
+  // Drag to scroll state
+  const [isDown, setIsDown] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
-          <p
-            style={{
-              fontSize: "20px",
-              color: "#081126",
-              maxWidth: "1100px",
-              margin: "0 auto",
-              lineHeight: "1.7",
-            }}
-          >
-            List of when doctors from which departments will be present for
-            consultancy
-          </p>
+  // Button scroll function
+  const scroll = (direction: "left" | "right") => {
+    if (sliderRef.current) {
+      const scrollAmount = 370; 
+      sliderRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  // Mouse drag functions
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!sliderRef.current) return;
+    setIsDown(true);
+    setStartX(e.pageX - sliderRef.current.offsetLeft);
+    setScrollLeft(sliderRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDown(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDown(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDown || !sliderRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - sliderRef.current.offsetLeft;
+    const walk = (x - startX) * 1.5; // Scroll speed multiplier
+    sliderRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  return (
+    <section className="py-5" style={{ backgroundColor: "#f0f4f8" }}>
+      <div className="container py-4">
+        
+        {/* Header & Controls */}
+        <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5 gap-3">
+          <div>
+            <h2 className="display-6 fw-bold mb-2" style={{ color: "#003366", letterSpacing: "-1px" }}>
+              Department & Timings
+            </h2>
+            <p className="text-muted fs-5 mb-0">
+              List of when doctors from which departments will be present for consultancy.
+            </p>
+          </div>
+          
+          {/* Custom Slider Arrows */}
+          <div className="d-flex gap-2">
+            <button 
+              onClick={() => scroll("left")}
+              className="btn rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+              style={{ width: "45px", height: "45px", backgroundColor: "#fff", color: "#0072ce", border: "none" }}
+            >
+              <FaChevronLeft />
+            </button>
+            <button 
+              onClick={() => scroll("right")}
+              className="btn rounded-circle d-flex align-items-center justify-content-center shadow-sm text-white"
+              style={{ width: "45px", height: "45px", backgroundColor: "#0072ce", border: "none" }}
+            >
+              <FaChevronRight />
+            </button>
+          </div>
         </div>
 
-        {/* Cards */}
-        <div className="row g-4">
-          {doctors.map((doctor, index) => (
-            <div className="col-lg-3 col-md-6" key={index}>
-              <div
-                style={{
-                  background: "#fff",
-                  border: "1px solid #cfcfcf",
-                  overflow: "hidden",
-                  height: "100%",
-                }}
+        {/* Drag-to-Scroll Container */}
+        <div 
+          ref={sliderRef}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
+          onMouseMove={handleMouseMove}
+          className="d-flex gap-4 pb-4"
+          style={{
+            overflowX: "auto",
+            scrollSnapType: isDown ? "none" : "x mandatory", // Disables snapping while dragging for smoothness
+            scrollbarWidth: "none", 
+            msOverflowStyle: "none", 
+            cursor: isDown ? "grabbing" : "grab",
+            userSelect: "none" // Prevents text highlighting while dragging
+          }}
+        >
+          <style>{`div::-webkit-scrollbar { display: none; }`}</style>
+
+          {departmentsData.map((dept, index) => (
+            <div 
+              key={index} 
+              className="card border-0 rounded-4 shadow-sm flex-shrink-0"
+              style={{ 
+                width: "350px", 
+                scrollSnapAlign: "start",
+                overflow: "hidden",
+                pointerEvents: isDown ? "none" : "auto" // Prevents accidental clicks while dragging
+              }}
+            >
+              {/* Department Header */}
+              <div 
+                className="py-3 text-center text-white" 
+                style={{ backgroundColor: "#003366", fontWeight: "700", letterSpacing: "1px", textTransform: "uppercase" }}
               >
-                {/* Department Header */}
-                <div
-                  style={{
-                    background: "#b12969",
-                    color: "#fff",
-                    textAlign: "center",
-                    fontSize: "18px",
-                    fontWeight: "700",
-                    padding: "16px 10px",
-                    minHeight: "75px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  {doctor.department}
-                </div>
-
-                {/* Image */}
-                <div className="text-center py-4">
-                  <img
-                    src={doctor.image}
-                    alt={doctor.name}
-                    style={{
-                      width: "120px",
-                      height: "120px",
-                      borderRadius: "50%",
-                      border: "3px solid #1c87b8",
-                      objectFit: "cover",
-                    }}
-                  />
-                </div>
-
-                {/* Details */}
-                <div
-                  style={{
-                    background: "#2f7ea7",
-                    color: "#fff",
-                    textAlign: "center",
-                    padding: "18px 15px",
-                    minHeight: "180px",
-                  }}
-                >
-                  <h4
-                    style={{
-                      fontSize: "18px",
-                      fontWeight: "700",
-                      marginBottom: "12px",
-                    }}
-                  >
-                    {doctor.name}
-                  </h4>
-
-                  <div
-                    style={{
-                      color: "#ffe600",
-                      fontWeight: "600",
-                      fontSize: "14px",
-                      lineHeight: "1.6",
-                    }}
-                  >
-                    Timings: {doctor.timing}
-                  </div>
-
-                  <div
-                    style={{
-                      fontSize: "14px",
-                      marginTop: "12px",
-                      lineHeight: "1.6",
-                    }}
-                  >
-                    Attached to: {doctor.hospital}
-                  </div>
-                </div>
+                {dept.department}
               </div>
+              
+              {/* Doctors List inside the card */}
+              <div className="card-body p-0">
+                {dept.doctors.map((doc, docIdx) => (
+                  <div 
+                    key={docIdx} 
+                    className={`p-4 d-flex flex-column align-items-center text-center ${docIdx !== dept.doctors.length - 1 ? 'border-bottom' : ''}`}
+                  >
+                    {/* Doctor Avatar - Added draggable="false" to fix drag bugs */}
+                    <img 
+                      src={doc.image} 
+                      alt={doc.name} 
+                      draggable="false"
+                      className="rounded-circle mb-3 shadow-sm"
+                      style={{ 
+                        width: "90px", 
+                        height: "90px", 
+                        objectFit: "cover", 
+                        border: "3px solid #f0f4f8",
+                        userSelect: "none"
+                      }}
+                    />
+                    
+                    {/* Doctor Info */}
+                    <h5 className="fw-bold mb-1" style={{ color: "#0072ce", fontSize: "1.1rem" }}>{doc.name}</h5>
+                    
+                    <div className="text-muted mb-2 d-flex align-items-center justify-content-center gap-2" style={{ fontSize: "0.85rem" }}>
+                      <FaUserMd style={{ color: "#b4d333" }} />
+                      <span>{doc.timings}</span>
+                    </div>
+                    
+                    <div className="text-muted d-flex align-items-center justify-content-center gap-2" style={{ fontSize: "0.85rem" }}>
+                      <FaHospital style={{ color: "#b4d333" }} />
+                      <span>{doc.hospital}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
             </div>
           ))}
         </div>
 
-        {/* Slider Dots */}
-        <div className="text-center mt-4">
-          {[...Array(12)].map((_, i) => (
-            <span
-              key={i}
-              style={{
-                display: "inline-block",
-                width: "8px",
-                height: "8px",
-                borderRadius: "50%",
-                margin: "0 4px",
-                background: i === 4 ? "#000" : "#bdbdbd",
-              }}
-            />
-          ))}
-        </div>
       </div>
     </section>
   );

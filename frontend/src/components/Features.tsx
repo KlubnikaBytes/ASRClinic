@@ -1,266 +1,67 @@
-
-
-import {
-  FaHandshake,
-  FaHospital,
-  FaMeh,
-  FaIdBadge,
-  FaDotCircle,
-} from "react-icons/fa";
+import { FaHandshake, FaStethoscope, FaLaptopMedical, FaUserCheck, FaCheckCircle } from "react-icons/fa";
 
 const Features = () => {
   return (
-    <section
-      style={{
-        background: "#edf2ed",
-        padding: "60px 0",
-      }}
-    >
-      <div className="container">
+    <section className="py-5" style={{ backgroundColor: "#ffffff" }}>
+      <div className="container py-4">
         <div className="row g-4">
-          {/* Card 1 */}
-          <div className="col-lg-3 col-md-6">
-            <div
-              style={{
-                background: "#fff",
-                borderRadius: "8px",
-                padding: "35px 25px",
-                textAlign: "center",
-                height: "100%",
-                position: "relative",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  top: "-25px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: "75px",
-                  height: "75px",
-                  borderRadius: "50%",
-                  background: "#e8f7ef",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <FaHandshake size={38} color="#0ea5d7" />
+          
+          {/* Card 1: Partner Services */}
+          <div className="col-md-6 col-lg-3">
+            <div className="card h-100 border-0 shadow-sm rounded-4 p-4 transition-hover text-center" style={{ backgroundColor: "#f8f9fa" }}>
+              <div className="mb-4 mx-auto d-flex align-items-center justify-content-center rounded-circle" style={{ width: "60px", height: "60px", backgroundColor: "rgba(0, 114, 206, 0.1)", color: "#0072ce" }}>
+                <FaHandshake size={28} />
               </div>
-
-              <h3
-                style={{
-                  color: "#081126",
-                  fontSize: "1.1rem",
-                  fontWeight: "600",
-                  marginTop: "15px",
-                  marginBottom: "25px",
-                  lineHeight: "1.4",
-                }}
-              >
-                Partner Services
-              </h3>
-
-              <div className="text-start">
-                {[
-                  "Digital X-ray",
-                  "ECG - 12 Channel",
-                  "Holter Monitoring",
-                  "PFT",
-                  "EEG Study",
-                  "NVC Study",
-                  "ABPM",
-                ].map((item, i) => (
-                  <div key={i} className="d-flex align-items-center mb-2">
-                    <FaDotCircle
-                      size={12}
-                      style={{ marginRight: "10px" }}
-                    />
-                    <span style={{ fontSize: "15px" }}>{item}</span>
-                  </div>
+              <h4 className="fw-bold mb-4" style={{ color: "#003366", fontSize: "1.2rem" }}>Partner Services</h4>
+              <ul className="list-unstyled text-start mx-auto d-inline-block" style={{ color: "#6c757d", fontSize: "0.95rem", lineHeight: "2" }}>
+                {['Digital X-ray', 'ECG - 12 Channel', 'Holter Monitoring', 'PFT', 'EEG Study', 'NVC Study'].map((item, i) => (
+                  <li key={i}><FaCheckCircle className="me-2" style={{ color: "#b4d333" }}/> {item}</li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
 
-          {/* Card 2 */}
-          <div className="col-lg-3 col-md-6">
-            <div
-              style={{
-                background: "#fff",
-                borderRadius: "8px",
-                padding: "35px 25px",
-                textAlign: "center",
-                height: "100%",
-                position: "relative",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  top: "-25px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: "75px",
-                  height: "75px",
-                  borderRadius: "50%",
-                  background: "#e8f7ef",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <FaHospital size={38} color="#0ea5d7" />
+          {/* Card 2: Specialized Doctors */}
+          <div className="col-md-6 col-lg-3">
+            <div className="card h-100 border-0 shadow-sm rounded-4 p-4 transition-hover text-center" style={{ backgroundColor: "#f8f9fa" }}>
+              <div className="mb-4 mx-auto d-flex align-items-center justify-content-center rounded-circle" style={{ width: "60px", height: "60px", backgroundColor: "rgba(0, 114, 206, 0.1)", color: "#0072ce" }}>
+                <FaStethoscope size={28} />
               </div>
-
-              <h3
-                style={{
-                  color: "#081126",
-                  fontSize: "1.1rem",
-                  fontWeight: "600",
-                  marginTop: "15px",
-                  marginBottom: "25px",
-                  lineHeight: "1.4",
-                }}
-              >
-                Specialize Doctors
-              </h3>
-
-              <div className="text-start">
-                {[
-                  "Neuro Surgery",
-                  "Gastroenterology",
-                  "Nephrology",
-                  "Surgical Oncology",
-                  "Neurology",
-                  "Endocrinologist",
-                  "Psychiatry",
-                ].map((item, i) => (
-                  <div key={i} className="d-flex align-items-center mb-2">
-                    <FaDotCircle
-                      size={12}
-                      style={{ marginRight: "10px" }}
-                    />
-                    <span style={{ fontSize: "15px" }}>{item}</span>
-                  </div>
+              <h4 className="fw-bold mb-4" style={{ color: "#003366", fontSize: "1.2rem" }}>Specialize Doctors</h4>
+              <ul className="list-unstyled text-start mx-auto d-inline-block" style={{ color: "#6c757d", fontSize: "0.95rem", lineHeight: "2" }}>
+                {['Neuro Surgery', 'Gastroenterology', 'Nephrology', 'Surgical Oncology', 'Neurology', 'Endocrinologist'].map((item, i) => (
+                  <li key={i}><FaCheckCircle className="me-2" style={{ color: "#b4d333" }}/> {item}</li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
 
-          {/* Card 3 */}
-          <div className="col-lg-3 col-md-6">
-            <div
-              style={{
-                background: "#fff",
-                borderRadius: "8px",
-                padding: "35px 25px",
-                textAlign: "center",
-                height: "100%",
-                position: "relative",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  top: "-25px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: "75px",
-                  height: "75px",
-                  borderRadius: "50%",
-                  background: "#e8f7ef",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <FaMeh size={38} color="#0ea5d7" />
+          {/* Card 3: Advanced Treatment */}
+          <div className="col-md-6 col-lg-3">
+            <div className="card h-100 border-0 shadow-sm rounded-4 p-4 transition-hover text-center" style={{ backgroundColor: "#f8f9fa" }}>
+              <div className="mb-4 mx-auto d-flex align-items-center justify-content-center rounded-circle" style={{ width: "60px", height: "60px", backgroundColor: "rgba(0, 114, 206, 0.1)", color: "#0072ce" }}>
+                <FaLaptopMedical size={28} />
               </div>
-
-              <h3
-                style={{
-                  color: "#081126",
-                  fontSize: "1.1rem",
-                  fontWeight: "600",
-                  marginTop: "15px",
-                  marginBottom: "25px",
-                  lineHeight: "1.4",
-                }}
-              >
-                Advance Treatment
-              </h3>
-
-              <p
-                style={{
-                  fontSize: "15px",
-                  color: "#444",
-                  lineHeight: "2.1",
-                  marginBottom: 0,
-                }}
-              >
-                All the doctors we have here are associated with various
-                renowned institutions in Kolkata.
+              <h4 className="fw-bold mb-3" style={{ color: "#003366", fontSize: "1.2rem" }}>Advance Treatment</h4>
+              <p className="text-muted" style={{ lineHeight: "1.8", fontSize: "0.95rem" }}>
+                All the doctors we have here are associated with various renowned institutions in Kolkata, providing access to top-tier medical technology and care.
               </p>
             </div>
           </div>
 
-          {/* Card 4 */}
-          <div className="col-lg-3 col-md-6">
-            <div
-              style={{
-                background: "#fff",
-                borderRadius: "8px",
-                padding: "35px 25px",
-                textAlign: "center",
-                height: "100%",
-                position: "relative",
-              }}
-            >
-              <div
-                style={{
-                  position: "absolute",
-                  top: "-25px",
-                  left: "50%",
-                  transform: "translateX(-50%)",
-                  width: "75px",
-                  height: "75px",
-                  borderRadius: "50%",
-                  background: "#e8f7ef",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <FaIdBadge size={38} color="#0ea5d7" />
+          {/* Card 4: Experienced Doctors */}
+          <div className="col-md-6 col-lg-3">
+            <div className="card h-100 border-0 shadow-sm rounded-4 p-4 transition-hover text-center" style={{ backgroundColor: "#f8f9fa" }}>
+              <div className="mb-4 mx-auto d-flex align-items-center justify-content-center rounded-circle" style={{ width: "60px", height: "60px", backgroundColor: "rgba(0, 114, 206, 0.1)", color: "#0072ce" }}>
+                <FaUserCheck size={28} />
               </div>
-
-              <h3
-                style={{
-                  color: "#081126",
-                  fontSize: "1.1rem",
-                  fontWeight: "600",
-                  marginTop: "15px",
-                  marginBottom: "25px",
-                  lineHeight: "1.4",
-                }}
-              >
-                Experienced Doctors
-              </h3>
-
-              <p
-                style={{
-                  fontSize: "15px",
-                  color: "#444",
-                  lineHeight: "2.1",
-                  marginBottom: 0,
-                }}
-              >
-                All the doctors who sit for consultations at our clinic are
-                experienced and skilled.
+              <h4 className="fw-bold mb-3" style={{ color: "#003366", fontSize: "1.2rem" }}>Experienced Doctors</h4>
+              <p className="text-muted" style={{ lineHeight: "1.8", fontSize: "0.95rem" }}>
+                All the doctors who sit for consultations at our clinic are highly experienced and skilled, ensuring you receive the best possible medical advice.
               </p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
