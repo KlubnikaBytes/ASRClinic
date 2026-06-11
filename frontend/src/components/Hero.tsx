@@ -1,4 +1,6 @@
 import { FaCloudDownloadAlt } from "react-icons/fa";
+import image1 from "../assets/image1.png";
+import image2 from "../assets/image2.png";
 
 const Hero = () => {
   return (
@@ -7,36 +9,36 @@ const Hero = () => {
       style={{
         textRendering: "optimizeLegibility",
         WebkitFontSmoothing: "antialiased",
-        backgroundColor: "#001e28" // Fallback color
+        backgroundColor: "#00121a" 
       }}
     >
-      {/* 1. Animated Background Image (Ken Burns Effect) 
-          Using the newly fetched professional clinical image.
-      */}
+      {/* 1. Animated Background Slideshow (Pure Crossfade, No Zoom) */}
       <div 
-        className="position-absolute w-100 h-100 start-0 top-0"
-        style={{ zIndex: 0, overflow: "hidden" }}
-      >
-        <div 
-          style={{
-            width: "100%", 
-            height: "100%",
-            backgroundImage: "url('')",
-            backgroundSize: "cover",
-            backgroundPosition: "center center",
-            // 30-second smooth animated zoom for a premium feel
-            animation: "kenBurnsZoom 30s infinite alternate ease-in-out" 
-          }}
-        ></div>
-      </div>
+        className="position-absolute w-100 h-100 start-0 top-0 slideshow-layer image-1"
+        style={{ 
+          zIndex: 0,
+          backgroundImage: `url(${image1})`,
+          backgroundSize: "cover",
+          // Anchors the image to the top so the clinic signboard is fully visible
+          backgroundPosition: "center top", 
+        }}
+      ></div>
+      
+      <div 
+        className="position-absolute w-100 h-100 start-0 top-0 slideshow-layer image-2"
+        style={{ 
+          zIndex: 0,
+          backgroundImage: `url(${image2})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center center", 
+        }}
+      ></div>
 
-      {/* 2. Refined Multi-Stop Gradient Overlay
-          Sits on top of the moving image (z-index: 1) to ensure the white text is always readable against the background.
-      */}
+      {/* 2. Professional Vignette Overlay */}
       <div 
         className="position-absolute w-100 h-100 top-0 start-0" 
         style={{ 
-          background: "linear-gradient(135deg, rgba(0, 51, 102, 0.85) 0%, rgba(0, 114, 206, 0.6) 50%, rgba(0, 30, 40, 0.95) 100%)",
+          background: "linear-gradient(to bottom, rgba(0, 15, 30, 0.75) 0%, rgba(0, 15, 30, 0.35) 50%, rgba(0, 15, 30, 0.85) 100%)",
           zIndex: 1
         }}
       ></div>
@@ -48,7 +50,7 @@ const Hero = () => {
           style={{ 
             lineHeight: "1.2", 
             letterSpacing: "-1.5px",
-            textShadow: "0px 4px 12px rgba(0,0,0,0.4)" 
+            textShadow: "0px 4px 12px rgba(0,0,0,0.5)" 
           }}
         >
           A Better Life Starts with a<br className="d-none d-md-block"/> Beautiful Smile
@@ -59,7 +61,7 @@ const Hero = () => {
             maxWidth: "800px", 
             lineHeight: "1.8",
             letterSpacing: "0.2px",
-            textShadow: "0px 2px 8px rgba(0,0,0,0.3)"
+            textShadow: "0px 2px 8px rgba(0,0,0,0.4)"
           }}
         >
           You Can Book An Appointment With The Doctor Of Your Choice By Clicking The Button Below.
@@ -76,8 +78,8 @@ const Hero = () => {
             transition: "all 0.3s ease"
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = "#b4d333"; // Brand Lime Green
-            e.currentTarget.style.color = "#003366"; // Navy text on hover
+            e.currentTarget.style.backgroundColor = "#b4d333"; 
+            e.currentTarget.style.color = "#003366"; 
             e.currentTarget.style.transform = "translateY(-3px)";
             e.currentTarget.style.boxShadow = "0 10px 25px rgba(180, 211, 51, 0.4)";
           }}
@@ -106,14 +108,33 @@ const Hero = () => {
         }}
       ></div>
 
-      {/* Embedded CSS Keyframes */}
+      {/* Embedded CSS for Pure Crossfade Animation (No Zooming) */}
       <style>{`
-        @keyframes kenBurnsZoom {
+        .slideshow-layer {
+          opacity: 0;
+          animation: pureCrossfade 16s infinite ease-in-out; 
+        }
+
+        .slideshow-layer.image-1 {
+          animation-delay: 0s;
+        }
+
+        .slideshow-layer.image-2 {
+          animation-delay: 8s;
+        }
+
+        @keyframes pureCrossfade {
           0% {
-            transform: scale(1);
+            opacity: 1;
+          }
+          35% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0;
           }
           100% {
-            transform: scale(1.15);
+            opacity: 0;
           }
         }
       `}</style>

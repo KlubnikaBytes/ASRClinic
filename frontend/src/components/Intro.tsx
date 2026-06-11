@@ -12,14 +12,14 @@ const Intro = () => {
               className="display-5 fw-bold mb-4" 
               style={{ color: "#003366", letterSpacing: "-1px" }}
             >
-              Welcome to ASR Clinic
+              Welcome to The Newtown Multispeciality Clinic
             </h2>
 
             <p 
               className="lead text-muted mb-4" 
               style={{ lineHeight: "1.8" }}
             >
-              Currently, ASR Clinic is a progressive clinic in Newtown. Every day, more than 150 patients discuss their various problems with our skilled doctors.
+              Currently, The Newtown Multispeciality Clinic is a progressive clinic in Newtown. Every day, more than 150 patients discuss their various problems with our skilled doctors.
             </p>
 
             <button 
@@ -97,7 +97,7 @@ const Intro = () => {
           {/* Right Content - Images */}
           <div className="col-lg-6 position-relative mt-5 mt-lg-0 text-center text-lg-end">
             
-            {/* Main Image (Replaced broken link with high-quality placeholder) */}
+            {/* Main Image */}
             <img
               src="https://images.unsplash.com/photo-1638202993928-7267aad84c31?auto=format&fit=crop&q=80&w=800"
               alt="Friendly Doctor"
@@ -110,7 +110,7 @@ const Intro = () => {
               }}
             />
 
-            {/* Overlapping Circle Image (Replaced broken link) */}
+            {/* Overlapping Circle Image */}
             <div
               className="position-absolute bg-white p-2 rounded-circle shadow-lg d-none d-sm-block"
               style={{

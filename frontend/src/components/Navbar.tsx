@@ -10,8 +10,6 @@ const Navbar = () => {
     }
   };
 
-  // Structured the links so we can cleanly display "Contact Us" 
-  // while linking to the "contact" ID.
   const navLinks = [
     { id: 'about', label: 'About' },
     { id: 'services', label: 'Services' },
@@ -24,43 +22,46 @@ const Navbar = () => {
     <nav 
       className="navbar navbar-expand-lg sticky-top py-3 transition-all" 
       style={{ 
-        backgroundColor: "rgba(255, 255, 255, 0.85)", // Semi-transparent white
-        backdropFilter: "blur(12px)",                 // The Glassmorphism blur
-        WebkitBackdropFilter: "blur(12px)",           // Safari support for the blur
-        borderBottom: "1px solid rgba(255, 255, 255, 0.4)", // Subtle glass edge
-        boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05)"   // Very soft, diffuse shadow
+        backgroundColor: "rgba(255, 255, 255, 0.85)", 
+        backdropFilter: "blur(12px)",                 
+        WebkitBackdropFilter: "blur(12px)",           
+        borderBottom: "1px solid rgba(255, 255, 255, 0.4)", 
+        boxShadow: "0 4px 30px rgba(0, 0, 0, 0.05)"   
       }}
     >
       <div className="container">
         
-        {/* Typographic Logo Reconstructed */}
+        {/* Premium Pure-Text Typographic Logo */}
         <a 
           className="navbar-brand d-flex align-items-center text-decoration-none" 
           href="#" 
           onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}
         >
-          <div className="d-flex align-items-center">
+          <div className="d-flex flex-column justify-content-center">
             <span 
               style={{ 
-                color: "#0072ce", // Primary Blue 
-                fontSize: "42px", 
+                color: "#003366", // Deep Navy for authority
+                fontSize: "1.6rem", // Sized up since the icon is gone
                 fontWeight: "900", 
-                lineHeight: "1", 
-                marginRight: "8px", 
-                letterSpacing: "-1.5px",
-                fontFamily: "Arial, sans-serif"
+                lineHeight: "0.9",
+                fontFamily: "Arial, sans-serif",
+                letterSpacing: "-0.5px"
               }}
             >
-              ASR
+              The Newtown
             </span>
-            <div className="d-flex flex-column justify-content-center" style={{ lineHeight: "1.1" }}>
-              <span style={{ color: "#b4d333", fontSize: "16px", fontWeight: "800", letterSpacing: "0.5px", fontFamily: "Arial, sans-serif" }}>
-                DOCTOR
-              </span>
-              <span style={{ color: "#b4d333", fontSize: "16px", fontWeight: "800", letterSpacing: "0.5px", fontFamily: "Arial, sans-serif" }}>
-                CLINIC
-              </span>
-            </div>
+            <span 
+              style={{ 
+                color: "#0072ce", // Primary blue for the descriptor
+                fontSize: "0.75rem", 
+                fontWeight: "700", 
+                letterSpacing: "1.5px", // Premium wide spacing
+                textTransform: "uppercase",
+                marginTop: "6px" // Clean breathing room between the lines
+              }}
+            >
+              Multispeciality Clinic
+            </span>
           </div>
         </a>
 
@@ -89,7 +90,6 @@ const Navbar = () => {
               </a>
             </li>
 
-            {/* Mapped Navigation Links including Contact Us */}
             {navLinks.map((item) => (
               <li className="nav-item" key={item.id}>
                 <a 
@@ -110,10 +110,11 @@ const Navbar = () => {
                 style={{ 
                   backgroundColor: "#0072ce", 
                   fontWeight: "600", 
-                  transition: "all 0.3s ease" 
+                  transition: "all 0.3s ease",
+                  whiteSpace: "nowrap" 
                 }} 
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#b4d333";
+                  e.currentTarget.style.backgroundColor = "#b4d333"; // Lime green hover
                   e.currentTarget.style.color = "#003366";
                   e.currentTarget.style.transform = "translateY(-2px)";
                 }}

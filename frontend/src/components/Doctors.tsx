@@ -20,7 +20,7 @@ const departmentsData = [
         name: "Dr. Aishee Bhattacharya",
         timings: "Wed 7PM / others by Appt.",
         hospital: "SSKM (PG Hospital)",
-        image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200&h=200"
+        image: "https://www.technoglobalhospital.com/admin/uploads/doctor/15-07-2025-07-08-07.jpg"
       },
       {
         name: "Dr. Koustav Jana",
@@ -37,13 +37,13 @@ const departmentsData = [
         name: "Dr. Partha Chakraborty",
         timings: "Mon to Sat 9AM & 5:30PM",
         hospital: "Bhagirathi Neotia",
-        image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=200&h=200"
+        image: "https://childspecialistkolkata.in/img/img-12.jpg"
       },
       {
         name: "Dr. Sudeshna Mallik",
         timings: "Mon to Sat 6:30 PM",
         hospital: "Spandan Hospital",
-        image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=200&h=200"
+        image: "https://corporate-storage-1.s3.dualstack.ap-south-1.amazonaws.com/prod/doctor-profiles/1756820414393-upload-6559502928073985449SUDESHNA%20MULLIK.jpeg"
       }
     ]
   },
@@ -54,13 +54,13 @@ const departmentsData = [
         name: "Dr. Sebabrata Jana",
         timings: "Saturday 11am / By Appt.",
         hospital: "Narayana Hospital",
-        image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=200&h=200"
+        image: "https://content.jdmagicbox.com/v2/comp/howrah/e4/9999pxx33.xx33.241112154345.e3e4/catalogue/dr-sebabrata-jana-narayana-superspeciality-hospital-andul-road-howrah-cardiologists-xyd9ef8xlr-250.jpg"
       },
       {
         name: "Dr. Krishanko Das",
         timings: "Wed 6pm, Sun 10am",
         hospital: "RG Kar, Charnock",
-        image: "https://images.unsplash.com/photo-1622902046580-2b47f47f5471?auto=format&fit=crop&q=80&w=200&h=200"
+        image: "https://sdpl8ic8website8blob8stg.blob.core.windows.net/doctorsdata/Dr-Krishanko-Das-CardiologistSurakshaClinicandDiagnostics.png"
       }
     ]
   }

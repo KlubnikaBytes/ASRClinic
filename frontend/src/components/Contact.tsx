@@ -1,12 +1,12 @@
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaMap, FaPaperPlane, FaWhatsapp } from "react-icons/fa";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaMap, FaPaperPlane, FaWhatsapp, FaRegClock } from "react-icons/fa";
 
 const Contact = () => {
   return (
     <section id="contact" className="position-relative py-5" style={{ backgroundColor: "#f8f9fa" }}>
       
-      {/* WhatsApp Floating Action Button */}
+      {/* WhatsApp Floating Action Button updated to the signboard number */}
       <a 
-        href="https://wa.me/917980367584" 
+        href="https://wa.me/918100650033" 
         target="_blank" 
         rel="noreferrer"
         className="position-fixed d-flex align-items-center justify-content-center rounded-circle shadow-lg"
@@ -38,7 +38,7 @@ const Contact = () => {
             Fill up the form and ask your queries. Our team will get back to you promptly.
           </p>
           <a 
-            href="https://maps.google.com/?q=New+Town+Kolkata" 
+            href="https://maps.google.com/maps?q=CE%2029,%20CE%20Block,%20Action%20Area%20I,%20Newtown,%20Kolkata,%20West%20Bengal%20700156" 
             target="_blank" 
             rel="noreferrer"
             className="btn text-white rounded-pill px-4 py-2 shadow-sm border-0 d-inline-flex align-items-center"
@@ -59,38 +59,49 @@ const Contact = () => {
         {/* Main Contact Card */}
         <div className="card shadow-lg border-0 rounded-4 overflow-hidden bg-white">
           
-          {/* Top Info Bar (Premium Blue) */}
+          {/* Top Info Bar: Expanded to 4 columns to fit the Clinic Hours beautifully */}
           <div className="row g-0 text-white" style={{ backgroundColor: "#0072ce" }}>
             
             {/* Address */}
-            <div className="col-md-4 p-4 p-lg-5 d-flex align-items-start gap-3 border-end border-light border-opacity-25">
-              <div className="mt-1 flex-shrink-0"><FaMapMarkerAlt size={24} /></div>
+            <div className="col-sm-6 col-lg-3 p-4 d-flex align-items-start gap-3 border-end border-light border-opacity-25">
+              <div className="mt-1 flex-shrink-0"><FaMapMarkerAlt size={22} /></div>
               <div>
-                <h5 className="fw-bold mb-2">Address</h5>
-                <p className="mb-0 opacity-75" style={{ fontSize: "0.95rem", lineHeight: "1.6" }}>
-                  DLF Heights Plaza, 1st Floor, Shop No - 117<br />New Town, Kolkata - 700135.
+                <h6 className="fw-bold mb-2">Address</h6>
+                <p className="mb-0 opacity-75" style={{ fontSize: "0.85rem", lineHeight: "1.6" }}>
+                  CE 29, Street No 247<br />Newtown, Kolkata 700156
+                </p>
+              </div>
+            </div>
+
+            {/* Hours */}
+            <div className="col-sm-6 col-lg-3 p-4 d-flex align-items-start gap-3 border-end border-light border-opacity-25">
+              <div className="mt-1 flex-shrink-0"><FaRegClock size={22} /></div>
+              <div>
+                <h6 className="fw-bold mb-2">Hours</h6>
+                <p className="mb-0 opacity-75" style={{ fontSize: "0.85rem", lineHeight: "1.6" }}>
+                  Open Daily<br />Closes at 10:00 PM
                 </p>
               </div>
             </div>
 
             {/* Phone */}
-            <div className="col-md-4 p-4 p-lg-5 d-flex align-items-start gap-3 border-end border-light border-opacity-25">
-              <div className="mt-1 flex-shrink-0"><FaPhoneAlt size={22} /></div>
+            <div className="col-sm-6 col-lg-3 p-4 d-flex align-items-start gap-3 border-end border-light border-opacity-25">
+              <div className="mt-1 flex-shrink-0"><FaPhoneAlt size={20} /></div>
               <div>
-                <h5 className="fw-bold mb-2">Phone</h5>
-                <p className="mb-0 opacity-75" style={{ fontSize: "0.95rem" }}>
-                  +91 79803 67584
+                <h6 className="fw-bold mb-2">Phone</h6>
+                <p className="mb-0 opacity-75" style={{ fontSize: "0.85rem", lineHeight: "1.6" }}>
+                  +91 81006 50033
                 </p>
               </div>
             </div>
 
             {/* Email */}
-            <div className="col-md-4 p-4 p-lg-5 d-flex align-items-start gap-3">
-              <div className="mt-1 flex-shrink-0"><FaEnvelope size={22} /></div>
+            <div className="col-sm-6 col-lg-3 p-4 d-flex align-items-start gap-3">
+              <div className="mt-1 flex-shrink-0"><FaEnvelope size={20} /></div>
               <div>
-                <h5 className="fw-bold mb-2">Email</h5>
-                <p className="mb-0 opacity-75" style={{ fontSize: "0.95rem" }}>
-                  asr.clinic@gmail.com
+                <h6 className="fw-bold mb-2">Email</h6>
+                <p className="mb-0 opacity-75" style={{ fontSize: "0.85rem", lineHeight: "1.6", wordBreak: "break-all" }}>
+                  newtownmultispecialityclinic@gmail.com
                 </p>
               </div>
             </div>
@@ -143,11 +154,11 @@ const Contact = () => {
               </form>
             </div>
 
-            {/* Right: Google Map Embed */}
+            {/* Right: Real Google Map Embed */}
             <div className="col-lg-6" style={{ minHeight: "400px" }}>
               <iframe 
-                title="ASR Clinic Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117925.33439927718!2d88.34735275!3d22.53542735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0275b020703c0d%3A0xece6f8e0fc2e1613!2sNew%20Town%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                title="Clinic Location"
+                src="https://maps.google.com/maps?q=CE%2029,%20CE%20Block,%20Action%20Area%20I,%20Newtown,%20Kolkata,%20West%20Bengal%20700156&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
