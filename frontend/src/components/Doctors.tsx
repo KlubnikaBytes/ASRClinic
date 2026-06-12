@@ -1,7 +1,40 @@
 import { useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight, FaUserMd, FaHospital } from "react-icons/fa";
 
+// 1. Import all local doctor images from the assets folder
+import imgAswini from "../assets/doctor image/Dr. Aswini Rana.jpg";
+import imgAranyak from "../assets/doctor image/Dr. Aranyak Sarkar.jpeg";
+import imgArka from "../assets/doctor image/Dr. Arka Adhvaryu (Retd).avif";
+import imgAishee from "../assets/doctor image/Dr. Aishee Bhattacharya.png";
+import imgKoustav from "../assets/doctor image/Dr. Koustav Jana.jpeg";
+import imgPartha from "../assets/doctor image/Dr. Partha Chakraborty.webp";
+import imgSudeshna from "../assets/doctor image/Dr. Sudeshna Mallik.jpg";
+import imgSebabrata from "../assets/doctor image/Dr. Sebabrata Jana.avif";
+import imgKrishanko from "../assets/doctor image/Dr. Krishanko Das.png";
+
 const departmentsData = [
+  {
+    department: "General Medicine",
+    doctors: [
+      {
+        name: "Dr. Aswini Rana",
+        timings: "By Appointment",
+        hospital: "CARE N CURE",
+        image: imgAswini // Using the imported variable
+      }
+    ]
+  },
+  {
+    department: "Orthopaedics",
+    doctors: [
+      {
+        name: "Dr. Aranyak Sarkar",
+        timings: "By Appointment",
+        hospital: "Spine & Pain Specialist",
+        image: imgAranyak
+      }
+    ]
+  },
   {
     department: "Psychiatry",
     doctors: [
@@ -9,7 +42,7 @@ const departmentsData = [
         name: "Dr. Arka Adhvaryu (Retd)",
         timings: "Wed 5pm / others by Appt.",
         hospital: "RG Kar, GD Hospital",
-        image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=200&h=200"
+        image: imgArka
       }
     ]
   },
@@ -20,13 +53,13 @@ const departmentsData = [
         name: "Dr. Aishee Bhattacharya",
         timings: "Wed 7PM / others by Appt.",
         hospital: "SSKM (PG Hospital)",
-        image: "https://www.technoglobalhospital.com/admin/uploads/doctor/15-07-2025-07-08-07.jpg"
+        image: imgAishee
       },
       {
         name: "Dr. Koustav Jana",
         timings: "By Appointment",
         hospital: "SSKM (PG Hospital)",
-        image: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=200&h=200"
+        image: imgKoustav
       }
     ]
   },
@@ -37,13 +70,13 @@ const departmentsData = [
         name: "Dr. Partha Chakraborty",
         timings: "Mon to Sat 9AM & 5:30PM",
         hospital: "Bhagirathi Neotia",
-        image: "https://childspecialistkolkata.in/img/img-12.jpg"
+        image: imgPartha
       },
       {
         name: "Dr. Sudeshna Mallik",
         timings: "Mon to Sat 6:30 PM",
         hospital: "Spandan Hospital",
-        image: "https://corporate-storage-1.s3.dualstack.ap-south-1.amazonaws.com/prod/doctor-profiles/1756820414393-upload-6559502928073985449SUDESHNA%20MULLIK.jpeg"
+        image: imgSudeshna
       }
     ]
   },
@@ -54,13 +87,13 @@ const departmentsData = [
         name: "Dr. Sebabrata Jana",
         timings: "Saturday 11am / By Appt.",
         hospital: "Narayana Hospital",
-        image: "https://content.jdmagicbox.com/v2/comp/howrah/e4/9999pxx33.xx33.241112154345.e3e4/catalogue/dr-sebabrata-jana-narayana-superspeciality-hospital-andul-road-howrah-cardiologists-xyd9ef8xlr-250.jpg"
+        image: imgSebabrata
       },
       {
         name: "Dr. Krishanko Das",
         timings: "Wed 6pm, Sun 10am",
         hospital: "RG Kar, Charnock",
-        image: "https://sdpl8ic8website8blob8stg.blob.core.windows.net/doctorsdata/Dr-Krishanko-Das-CardiologistSurakshaClinicandDiagnostics.png"
+        image: imgKrishanko
       }
     ]
   }
@@ -110,7 +143,7 @@ const Doctors = () => {
   };
 
   return (
-    <section className="py-5" style={{ backgroundColor: "#f0f4f8" }}>
+    <section id="doctors" className="py-5" style={{ backgroundColor: "#f0f4f8" }}>
       <div className="container py-4">
         
         {/* Header & Controls */}
@@ -170,7 +203,7 @@ const Doctors = () => {
                 width: "350px", 
                 scrollSnapAlign: "start",
                 overflow: "hidden",
-                pointerEvents: isDown ? "none" : "auto" // Prevents accidental clicks while dragging
+                pointerEvents: isDown ? "none" : "auto" 
               }}
             >
               {/* Department Header */}
@@ -188,7 +221,7 @@ const Doctors = () => {
                     key={docIdx} 
                     className={`p-4 d-flex flex-column align-items-center text-center ${docIdx !== dept.doctors.length - 1 ? 'border-bottom' : ''}`}
                   >
-                    {/* Doctor Avatar - Added draggable="false" to fix drag bugs */}
+                    {/* Doctor Avatar using the imported local image */}
                     <img 
                       src={doc.image} 
                       alt={doc.name} 
@@ -211,8 +244,8 @@ const Doctors = () => {
                       <span>{doc.timings}</span>
                     </div>
                     
-                    <div className="text-muted d-flex align-items-center justify-content-center gap-2" style={{ fontSize: "0.85rem" }}>
-                      <FaHospital style={{ color: "#b4d333" }} />
+                    <div className="text-muted d-flex align-items-center justify-content-center gap-2" style={{ fontSize: "0.85rem", textAlign: "center" }}>
+                      <FaHospital style={{ color: "#b4d333", flexShrink: 0 }} />
                       <span>{doc.hospital}</span>
                     </div>
                   </div>
